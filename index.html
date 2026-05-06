@@ -13,7 +13,7 @@
     <!-- Icons & Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
         body { font-family: 'Noto Sans TC', sans-serif; }
         .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
         .floating-3d {
@@ -37,13 +37,15 @@
             z-index: 10;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        /* 優化表格在手機上的捲動指示 */
         .table-container::-webkit-scrollbar {
             height: 4px;
         }
         .table-container::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 10px;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
@@ -62,8 +64,8 @@
             return (
                 <div className="min-h-screen bg-slate-50 relative overflow-x-hidden">
                     {/* 頂部通知欄 */}
-                    <div className="bg-yellow-400 text-blue-900 text-center py-2 px-4 font-bold text-xs md:text-sm sticky top-0 z-50 shadow-md">
-                        <i className="fas fa-users mr-2"></i> 精緻小團班，名額倒數中！【5/10 前預約享 9 折再折 1,000】
+                    <div className="bg-yellow-400 text-blue-900 text-center py-2 px-4 font-black text-xs md:text-sm sticky top-0 z-50 shadow-md">
+                        <i className="fas fa-bullhorn mr-2 animate-pulse"></i> 5/10 前預約！訂金 $2,000 全額抵學費，英數雙修再省 $1,000！
                     </div>
 
                     {/* 導覽列 */}
@@ -71,7 +73,7 @@
                         <div className="flex items-center gap-3">
                             <img src={logoMain} alt="Logo" className="h-12 md:h-16 w-auto object-contain" />
                             <div className="border-l-2 border-slate-200 pl-3">
-                                <h1 className="text-xl md:text-2xl font-bold text-blue-900 leading-tight">金名德晉校</h1>
+                                <h1 className="text-xl md:text-2xl font-bold text-blue-900 leading-tight tracking-tight">金名德晉校</h1>
                             </div>
                         </div>
                         <div className="flex flex-wrap justify-center gap-4 text-xs md:text-sm font-bold text-slate-600">
@@ -87,102 +89,119 @@
                     {/* Hero 區塊 */}
                     <header className="gradient-bg text-white py-12 md:py-24 px-6 text-center relative overflow-hidden">
                         <div className="relative z-10 max-w-4xl mx-auto">
-                            <h2 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6 tracking-tight">國一先修早鳥預約</h2>
-                            <p className="text-lg md:text-2xl opacity-90 mb-8 md:mb-10 text-blue-100 leading-relaxed">
-                                <span className="bg-yellow-400 text-blue-900 px-2 py-1 rounded mx-1 font-black shadow-lg">5月至12月</span> 共 8 個月完整學習規劃 <br className="hidden md:block"/>
-                                精緻小團班教學，確保孩子領先起跑點
+                            <div className="inline-block bg-yellow-400 text-blue-900 px-4 py-1 rounded-full text-sm font-black mb-6 shadow-xl animate-bounce">
+                                2026 國一先修早鳥開跑
+                            </div>
+                            <h2 className="text-4xl md:text-7xl font-black mb-4 md:mb-6 tracking-tighter text-glow">
+                                預約未來 領先起跑
+                            </h2>
+                            <p className="text-lg md:text-2xl opacity-90 mb-8 md:mb-12 text-blue-100 leading-relaxed font-medium">
+                                <span className="border-b-2 border-yellow-400">5月至12月</span> 8個月精準學習規劃 <br className="hidden md:block"/>
+                                專業小班制，給孩子最厚實的國中基礎
                             </p>
-                            <div className="flex flex-wrap justify-center gap-3 md:gap-4 text-sm md:text-base">
-                                <span className="bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 md:px-6 md:py-3 rounded-full font-bold">
-                                    <i className="fas fa-check-circle text-yellow-300 mr-2"></i> 訂金全額可領回
-                                </span>
-                                <span className="bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 md:px-6 md:py-3 rounded-full font-bold">
-                                    <i className="fas fa-fire text-orange-400 mr-2"></i> 雙修加碼再折 $1,000
-                                </span>
+                            
+                            <div className="flex flex-wrap justify-center gap-3 md:gap-6 text-sm md:text-lg">
+                                <div className="bg-white/10 backdrop-blur-md border border-white/30 px-6 py-3 rounded-2xl font-bold flex flex-col items-center">
+                                    <span className="text-yellow-300 text-xs mb-1">超強保障</span>
+                                    <span><i className="fas fa-check-circle mr-2"></i>訂金 $2,000 全額抵學費</span>
+                                </div>
+                                <div className="bg-white/10 backdrop-blur-md border border-white/30 px-6 py-3 rounded-2xl font-bold flex flex-col items-center">
+                                    <span className="text-orange-400 text-xs mb-1">限時加碼</span>
+                                    <span><i className="fas fa-fire mr-2"></i>雙修現折 $1,000</span>
+                                </div>
                             </div>
                         </div>
-                        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl"></div>
+                        {/* 裝飾背景 */}
+                        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+                        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl"></div>
                     </header>
 
-                    <main className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-12">
+                    <main className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16">
                         {/* 優勢卡片 */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-12 md:mb-16">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-20">
                             {[
-                                { icon: 'fa-clock', title: '8個月服務', desc: '5月陪伴到12月', color: 'blue' },
-                                { icon: 'fa-hand-holding-usd', title: '5-6月$0', desc: '早鳥先修免費', color: 'green' },
-                                { icon: 'fa-plus-circle', title: '雙修加碼', desc: '合報現折 $1,000', color: 'red' },
-                                { icon: 'fa-shield-alt', title: '全額退費', desc: '訂金預約無風險', color: 'yellow' }
+                                { icon: 'fa-coins', title: '全額折抵', desc: '預約訂金可抵學費', color: 'blue' },
+                                { icon: 'fa-gift', title: '5-6月 $0', desc: '早鳥預約送先修', color: 'green' },
+                                { icon: 'fa-percentage', title: '雙修加碼', desc: '兩科合報再折 $1,000', color: 'red' },
+                                { icon: 'fa-shield-check', title: '零風險預約', desc: '決定不參加全領回', color: 'yellow' }
                             ].map((item, idx) => (
-                                <div key={idx} className={`bg-white p-4 md:p-6 rounded-2xl shadow-sm text-center card-hover border-b-4 border-${item.color}-500`}>
-                                    <div className={`text-${item.color}-500 text-2xl md:text-3xl mb-2 md:mb-3`}><i className={`fas ${item.icon}`}></i></div>
-                                    <h3 className="font-bold text-sm md:text-base mb-1">{item.title}</h3>
-                                    <p className="text-[10px] md:text-xs text-slate-500 leading-tight">{item.desc}</p>
+                                <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all text-center border-b-4 border-slate-100 hover:border-blue-500 group">
+                                    <div className={`text-slate-400 group-hover:text-blue-500 text-3xl mb-4 transition-colors`}><i className={`fas ${item.icon}`}></i></div>
+                                    <h3 className="font-bold text-slate-800 text-sm md:text-lg mb-2">{item.title}</h3>
+                                    <p className="text-[11px] md:text-sm text-slate-500 leading-tight">{item.desc}</p>
                                 </div>
                             ))}
                         </div>
 
                         {/* 費用試算表格 */}
-                        <section className="bg-white rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden mb-8 border border-slate-100">
-                            <div className="bg-slate-50 p-6 md:p-8 border-b border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
-                                <div>
-                                    <h2 className="text-xl md:text-2xl font-bold text-slate-800 tracking-tight text-center md:text-left">早鳥預約試算表</h2>
-                                    <p className="text-blue-600 font-bold text-xs md:text-sm mt-1 text-center md:text-left">
-                                        <i className="fas fa-info-circle mr-1"></i> 以下學費為「扣除 5/10 前預繳之 2,000 元訂金」後的餘額
+                        <section className="bg-white rounded-3xl shadow-2xl overflow-hidden mb-10 border border-slate-100">
+                            <div className="bg-slate-900 p-6 md:p-10 text-white flex flex-col md:flex-row justify-between items-center gap-6">
+                                <div className="text-center md:text-left">
+                                    <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-2">2026 早鳥預約試算表</h2>
+                                    <p className="text-blue-300 font-bold text-sm md:text-base">
+                                        <i className="fas fa-calculator mr-2 text-yellow-400"></i> 預繳訂金 $2,000 元於結清時「全額折抵學費」
                                     </p>
                                 </div>
-                                <img src={logoSub} alt="金名標誌" className="h-8 md:h-10 opacity-60 hidden md:block" />
+                                <div className="bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/20">
+                                    <span className="text-xs uppercase tracking-widest block opacity-70">學費涵蓋期間</span>
+                                    <span className="text-lg font-bold">5月至12月 (共 8 個月)</span>
+                                </div>
                             </div>
                             <div className="overflow-x-auto table-container">
-                                <table className="w-full text-left min-w-[600px] md:min-w-full">
+                                <table className="w-full text-left min-w-[700px]">
                                     <thead>
-                                        <tr className="bg-slate-50 text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">
-                                            <th className="py-4 md:py-5 px-6 md:px-8">課程組合</th>
-                                            <th className="py-4 md:py-5 px-6 md:px-8 text-center">5-6 月先修</th>
-                                            <th className="py-4 md:py-5 px-6 md:px-8">應繳學費餘額</th>
-                                            <th className="py-4 md:py-5 px-6 md:px-8">教材費</th>
-                                            <th className="py-4 md:py-5 px-6 md:px-8 text-right font-bold text-blue-600">8個月結清餘額</th>
+                                        <tr className="bg-slate-50 text-slate-500 text-[11px] md:text-xs font-black uppercase tracking-widest border-b border-slate-100">
+                                            <th className="py-5 px-8">專業課程組合</th>
+                                            <th className="py-5 px-8 text-center">5-6 月先修課</th>
+                                            <th className="py-5 px-8">學費餘額 (已扣訂金)</th>
+                                            <th className="py-5 px-8">教材費</th>
+                                            <th className="py-5 px-8 text-right text-blue-600">8個月結清總餘額</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100">
                                         {[
-                                            { name: '英文單修', sub: '精緻小團班', early: '免費', fee: '$16,900', material: '$1,600', total: '$18,500' },
-                                            { name: '數學單修', sub: '精緻小團班', early: '免費', fee: '$16,900', material: '$1,600', total: '$18,500' }
+                                            { name: '英文單修', sub: '國一英語精緻班', early: '贈送', fee: '$16,900', material: '$1,600', total: '$18,500' },
+                                            { name: '數學單修', sub: '國一數學精英班', early: '贈送', fee: '$16,900', material: '$1,600', total: '$18,500' }
                                         ].map((row, i) => (
-                                            <tr key={i} className="hover:bg-slate-50 transition">
-                                                <td className="py-6 md:py-8 px-6 md:px-8">
-                                                    <div className="font-bold text-slate-800 text-sm md:text-base">{row.name}</div>
-                                                    <div className="text-[10px] md:text-xs text-slate-400 mt-1">{row.sub}</div>
+                                            <tr key={i} className="hover:bg-blue-50/30 transition">
+                                                <td className="py-8 px-8">
+                                                    <div className="font-bold text-slate-800 text-lg">{row.name}</div>
+                                                    <div className="text-xs text-slate-400 mt-1">{row.sub}</div>
                                                 </td>
-                                                <td className="py-6 md:py-8 px-6 md:px-8 text-center">
-                                                    <span className="bg-green-100 text-green-700 px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-bold whitespace-nowrap">完全免費</span>
+                                                <td className="py-8 px-8 text-center">
+                                                    <span className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-black shadow-sm">免費贈送</span>
                                                 </td>
-                                                <td className="py-6 md:py-8 px-6 md:px-8 text-xs md:text-sm text-slate-600 font-medium">{row.fee}</td>
-                                                <td className="py-6 md:py-8 px-6 md:px-8 text-xs md:text-sm text-slate-600">{row.material}</td>
-                                                <td className="py-6 md:py-8 px-6 md:px-8 text-right font-bold text-lg md:text-xl text-slate-800">{row.total}</td>
+                                                <td className="py-8 px-8">
+                                                    <div className="text-slate-600 font-medium">{row.fee}</div>
+                                                    <div className="text-[10px] text-slate-400">學費 $18,900 - 訂金 $2,000</div>
+                                                </td>
+                                                <td className="py-8 px-8 text-slate-600 font-medium">{row.material}</td>
+                                                <td className="py-8 px-8 text-right font-black text-2xl text-slate-900">{row.total}</td>
                                             </tr>
                                         ))}
-                                        <tr className="bg-blue-950 text-white shadow-inner">
-                                            <td className="py-8 md:py-10 px-6 md:px-8 relative">
-                                                <div className="best-value-badge hidden md:block">年度最划算首選</div>
-                                                <div className="font-bold text-lg md:text-2xl flex items-center">
-                                                    <i className="fas fa-crown text-yellow-400 mr-2 md:mr-3"></i> 英數雙修
+                                        <tr className="bg-blue-600 text-white relative">
+                                            <td className="py-10 px-8 relative">
+                                                <div className="best-value-badge">年度最划算首選</div>
+                                                <div className="font-black text-2xl flex items-center mb-1">
+                                                    <i className="fas fa-star text-yellow-400 mr-2"></i> 英數雙修
                                                 </div>
-                                                <div className="text-[10px] md:text-xs text-blue-200 mt-1 md:mt-2">5-12月共 8 個月完整課程</div>
+                                                <div className="text-xs text-blue-100 opacity-80 font-medium">5-12月完整國一基礎工程</div>
                                             </td>
-                                            <td className="py-8 md:py-10 px-6 md:px-8 text-center">
-                                                <span className="bg-white text-blue-900 px-2 md:px-3 py-1 rounded-full text-[9px] md:text-[10px] font-bold whitespace-nowrap">完全免費</span>
+                                            <td className="py-10 px-8 text-center">
+                                                <div className="inline-block bg-white text-blue-600 px-4 py-1 rounded-full text-sm font-black shadow-lg">免費贈送</div>
                                             </td>
-                                            <td className="py-8 md:py-10 px-6 md:px-8">
-                                                <div className="text-[9px] md:text-[10px] text-blue-300 line-through opacity-60">原價 $33,800</div>
-                                                <div className="font-bold text-base md:text-xl text-yellow-300">$32,800</div>
-                                                <div className="text-[9px] md:text-[10px] text-blue-200">(加碼再折 $1,000)</div>
+                                            <td className="py-10 px-8">
+                                                <div className="text-[11px] text-blue-200 line-through opacity-60">原學費 $33,800</div>
+                                                <div className="font-black text-2xl text-yellow-300 tracking-tight">$32,800</div>
+                                                <div className="text-[11px] font-bold text-yellow-200 bg-blue-700/50 px-2 py-0.5 rounded inline-block mt-1">
+                                                    雙修加碼再折 $1,000
+                                                </div>
                                             </td>
-                                            <td className="py-8 md:py-10 px-6 md:px-8 text-xs md:text-blue-100">$3,200</td>
-                                            <td className="py-8 md:py-10 px-6 md:px-8 text-right">
-                                                <div className="text-[9px] md:text-[10px] text-blue-200 mb-1">原價 $37,000 現折後餘額</div>
-                                                <div className="font-bold text-2xl md:text-4xl text-yellow-400">$36,000</div>
-                                                <div className="bg-yellow-400 text-blue-900 text-[9px] md:text-[11px] py-1 px-2 md:px-3 rounded-md font-bold mt-2 md:mt-3 inline-block shadow-lg">
+                                            <td className="py-10 px-8 text-blue-50 font-bold">$3,200</td>
+                                            <td className="py-10 px-8 text-right">
+                                                <div className="text-[10px] text-blue-200 mb-1">已扣除 $2,000 訂金之餘額</div>
+                                                <div className="font-black text-4xl text-yellow-400 tracking-tighter">$36,000</div>
+                                                <div className="bg-white text-blue-600 text-[11px] py-1 px-3 rounded-lg font-black mt-3 inline-block shadow-md">
                                                     平均每科每月僅約 $2,375
                                                 </div>
                                             </td>
@@ -191,101 +210,124 @@
                                 </table>
                             </div>
                         </section>
-                        <p className="text-slate-400 text-[10px] text-center mb-12 md:mb-16 px-4 leading-relaxed">
-                            ＊精算說明：(雙修餘額 $32,800 + 訂金 $2,000 + 教材費 $3,200) ÷ 8個月 ÷ 2學科 = 每科每月 $2,375。<br className="hidden md:block"/>
-                            此費用已包含所有先修、正式課程學費、教材及報名各項支出。
-                        </p>
+
+                        {/* 補充說明 */}
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-6 mb-16">
+                            <p className="text-slate-400 text-xs md:text-sm text-center md:text-left leading-relaxed">
+                                <i className="fas fa-info-circle mr-1"></i> <strong>計算公式：</strong> (雙修學費 $32,800 + 訂金 $2,000 + 教材費 $3,200) ÷ 8個月 ÷ 2學科 = 每科每月 $2,375。<br/>
+                                ＊本費用已包含：5-6月先修學費、7-12月正式課學費、全套教材費及報名費。
+                            </p>
+                            <div className="flex-shrink-0 flex gap-2">
+                                <span className="w-3 h-3 rounded-full bg-blue-600"></span>
+                                <span className="w-3 h-3 rounded-full bg-blue-400"></span>
+                                <span className="w-3 h-3 rounded-full bg-blue-200"></span>
+                            </div>
+                        </div>
 
                         {/* 報名須知與聯絡 */}
-                        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
-                            <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm">
-                                <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 flex items-center text-blue-900">
-                                    <i className="fas fa-info-circle mr-3 text-blue-500"></i> 專業報名須知
+                        <div className="grid md:grid-cols-2 gap-8 mb-16">
+                            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                                <h3 className="text-xl font-black mb-8 flex items-center text-blue-900 uppercase tracking-widest">
+                                    <span className="w-8 h-8 bg-blue-900 text-white rounded-lg flex items-center justify-center mr-3 text-sm">01</span>
+                                    報名預約規範
                                 </h3>
-                                <ul className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+                                <ul className="space-y-6 text-slate-600 text-sm md:text-base leading-relaxed">
                                     <li className="flex items-start">
-                                        <i className="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                        <span><strong>訂金預約：</strong> 繳交訂金 $2,000 即可享有 5-6 月免費先修與早鳥雙重折扣。</span>
+                                        <div className="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                            <i className="fas fa-check text-[10px]"></i>
+                                        </div>
+                                        <span><strong>訂金全額折抵：</strong> 預繳之 $2,000 訂金，將於繳交正式課程學費時全額扣除，絕不額外收費。</span>
                                     </li>
                                     <li className="flex items-start">
-                                        <i className="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                        <span><strong>安心退費：</strong> 本校提供全額退費保證，報名後若決定不參加，訂金全領回。</span>
+                                        <div className="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                            <i className="fas fa-check text-[10px]"></i>
+                                        </div>
+                                        <span><strong>英數雙修優惠：</strong> 5/10 前完成預約英數兩科，除享 9 折優惠外，加碼再折抵 $1,000 元。</span>
                                     </li>
                                     <li className="flex items-start">
-                                        <i className="fas fa-exclamation-triangle text-orange-500 mt-1 mr-3 flex-shrink-0"></i>
-                                        <span><strong>課程規範：</strong> 若參加先修後不續報正式課程，先修月份將依原價計費扣除。</span>
+                                        <div className="w-6 h-6 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                                            <i className="fas fa-undo text-[10px]"></i>
+                                        </div>
+                                        <span><strong>全額退費保證：</strong> 若報名後因故無法參加，於課程開始前皆可申請退還全額訂金。</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div className="bg-blue-50 rounded-2xl md:rounded-3xl p-6 md:p-8 border border-blue-100">
-                                <h3 className="text-lg md:text-xl font-bold mb-4 text-blue-900 flex items-center">
-                                    <i className="fas fa-location-arrow mr-3 text-blue-500"></i> 聯絡諮詢
+
+                            <div className="bg-blue-50 rounded-3xl p-8 border border-blue-100">
+                                <h3 className="text-xl font-black mb-8 flex items-center text-blue-900 uppercase tracking-widest">
+                                    <span className="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center mr-3 text-sm">02</span>
+                                    聯絡與諮詢
                                 </h3>
                                 <div className="space-y-4">
-                                    <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition">
-                                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                            <i className="fas fa-phone-alt text-blue-600"></i>
+                                    <a href="tel:036572508" className="flex items-center gap-5 bg-white p-5 rounded-2xl shadow-sm hover:translate-x-2 transition-transform cursor-pointer border border-transparent hover:border-blue-200">
+                                        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i className="fas fa-phone-alt text-blue-600 text-xl"></i>
                                         </div>
                                         <div>
-                                            <p className="text-[10px] text-slate-400">校區熱線</p>
-                                            <a href="tel:036572508" className="text-base md:text-lg font-bold text-slate-800">03-6572508</a>
+                                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">校區諮詢電話</p>
+                                            <p className="text-xl font-black text-slate-800 tracking-tighter">03-6572508</p>
                                         </div>
-                                    </div>
-                                    <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm">
-                                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                            <i className="fas fa-map-marker-alt text-blue-600"></i>
+                                    </a>
+                                    <div className="flex items-center gap-5 bg-white p-5 rounded-2xl shadow-sm border border-transparent">
+                                        <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i className="fas fa-map-marker-alt text-blue-600 text-xl"></i>
                                         </div>
                                         <div>
-                                            <p className="text-[10px] text-slate-400">校區地址</p>
-                                            <p className="text-sm font-bold text-slate-800">竹北市文孝街23號(補教協會2樓)</p>
+                                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">校區通訊地址</p>
+                                            <p className="text-sm font-black text-slate-800 leading-tight">竹北市文孝街23號(補教協會2樓)</p>
                                         </div>
                                     </div>
-                                    <a href={mapUrl} target="_blank" className="block w-full bg-blue-600 text-white text-center py-4 rounded-xl md:rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg text-sm md:text-base">
-                                        <i className="fas fa-directions mr-2"></i> 開啟地圖導航
+                                    <a href={mapUrl} target="_blank" className="block w-full bg-slate-900 text-white text-center py-5 rounded-2xl font-black hover:bg-slate-800 transition shadow-xl text-lg tracking-widest">
+                                        <i className="fas fa-directions mr-2"></i> 前往校區導航
                                     </a>
                                 </div>
                             </div>
                         </div>
 
                         {/* 最後呼籲 */}
-                        <div className="bg-slate-900 text-white rounded-3xl md:rounded-[3rem] p-8 md:p-12 text-center shadow-2xl relative overflow-hidden">
+                        <div className="bg-blue-600 text-white rounded-[3rem] p-10 md:p-20 text-center shadow-2xl relative overflow-hidden">
                             <div className="relative z-10">
-                                <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">精緻小團班，名額倒數中</h2>
-                                <p className="text-slate-400 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed text-sm md:text-base">
-                                    我們重視每位孩子的學習成效。5/10 前繳費鎖定 8 個月超值早鳥價，
-                                    <span className="text-yellow-400 font-bold block mt-3 text-lg md:text-2xl">報名英數兩科再省 $1,000 元！</span>
+                                <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight">精緻小團班，預約從速</h2>
+                                <p className="text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed text-base md:text-xl font-medium">
+                                    我們堅持最高教學品質，名額有限。現在預約不僅鎖定最優學費價格，
+                                    更讓孩子在升上國中前建立強大自信心。
                                 </p>
-                                <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
-                                    <a href={lineUrl} target="_blank" className="bg-[#06C755] px-8 py-4 md:px-12 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl shadow-xl hover:scale-105 transition transform flex items-center justify-center">
-                                        <i className="fab fa-line text-2xl md:text-3xl mr-3"></i> LINE 預約諮詢
+                                <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8">
+                                    <a href={lineUrl} target="_blank" className="bg-[#06C755] text-white px-10 py-5 rounded-2xl font-black text-xl shadow-2xl hover:scale-105 transition transform flex items-center justify-center group">
+                                        <i className="fab fa-line text-3xl mr-3 group-hover:rotate-12 transition-transform"></i> LINE 立即預約
                                     </a>
-                                    <a href="tel:036572508" className="bg-white text-slate-900 px-8 py-4 md:px-12 md:py-5 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl shadow-xl hover:scale-105 transition transform flex items-center justify-center">
-                                        <i className="fas fa-phone-alt mr-3 text-blue-600"></i> 電話報名
+                                    <a href="tel:036572508" className="bg-white text-blue-600 px-10 py-5 rounded-2xl font-black text-xl shadow-2xl hover:scale-105 transition transform flex items-center justify-center">
+                                        <i className="fas fa-phone-alt mr-3"></i> 電話直接預訂
                                     </a>
                                 </div>
+                            </div>
+                            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                                <div className="absolute top-10 left-10 text-9xl font-black">2026</div>
+                                <div className="absolute bottom-10 right-10 text-9xl font-black opacity-50 underline">NEW</div>
                             </div>
                         </div>
                     </main>
 
                     {/* 頁尾 */}
-                    <footer className="bg-slate-50 py-12 md:py-16 px-6 border-t border-slate-200">
+                    <footer className="bg-white py-16 px-6 border-t border-slate-100">
                         <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-                            <img src={logoMain} alt="Logo" className="h-12 md:h-16 mb-6 grayscale opacity-40" />
-                            <h4 className="text-xl font-bold text-slate-800 tracking-wider">金名德晉校</h4>
-                            <p className="text-xs md:text-sm text-slate-400 mt-2 leading-loose">
-                                竹北市文孝街23號(補教協會2樓) | 03-6572508 <br/>
-                                國中資優教育領導品牌
+                            <img src={logoMain} alt="Logo" className="h-14 mb-8 opacity-60 grayscale" />
+                            <h4 className="text-2xl font-black text-slate-800 tracking-widest mb-4">金名德晉校</h4>
+                            <p className="text-sm text-slate-400 max-w-md leading-loose">
+                                竹北市文孝街23號(補教協會2樓) <br/>
+                                服務熱線：03-6572508 <br/>
+                                致力於提供新竹地區最卓越的國中教育資源
                             </p>
-                            <div className="mt-8 pt-8 border-t border-slate-200 w-full text-slate-400 text-[9px] md:text-[10px] tracking-widest">
-                                &copy; 2026 JINMING DE-JIN. ALL RIGHTS RESERVED.
+                            <div className="mt-12 pt-8 border-t border-slate-100 w-full text-slate-300 text-[10px] tracking-[0.2em] font-bold">
+                                &copy; 2026 JINMING DE-JIN EDUCATION. ALL RIGHTS RESERVED.
                             </div>
                         </div>
                     </footer>
 
                     {/* 3D 浮動 Line 按鈕 */}
-                    <a href={lineUrl} target="_blank" className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] floating-3d flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#06C755] rounded-full shadow-2xl border-4 border-white transition-transform active:scale-95">
-                        <i className="fab fa-line text-white text-3xl md:text-4xl"></i>
-                        <span className="absolute -top-2 -right-2 md:-top-3 md:-right-3 bg-red-500 text-white text-[9px] md:text-[10px] px-2 py-0.5 md:py-1 rounded-full border-2 border-white font-bold animate-bounce shadow">預約</span>
+                    <a href={lineUrl} target="_blank" className="fixed bottom-8 right-8 z-[100] floating-3d flex items-center justify-center w-16 h-16 bg-[#06C755] rounded-full shadow-2xl border-4 border-white transition-transform active:scale-95 group">
+                        <i className="fab fa-line text-white text-4xl"></i>
+                        <span className="absolute -top-3 -left-12 bg-red-500 text-white text-[10px] px-3 py-1 rounded-full border-2 border-white font-black shadow-lg animate-pulse">限量名額</span>
                     </a>
                 </div>
             );
